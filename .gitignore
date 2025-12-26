@@ -1,5 +1,6 @@
 /build/
 /bin/
+/target/
 .gradle/
 .idea/
 *.iml
@@ -8,3 +9,5 @@ actions-runner/
 docker-compose.yml
 Dockerfile
 src/main/resources/keystore.p12
+pom.xml
+.gitignore
