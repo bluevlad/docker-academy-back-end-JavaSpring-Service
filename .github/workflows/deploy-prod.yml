@@ -18,6 +18,12 @@ jobs:
       run: |
         Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\docker-compose.yml" -Destination .
         Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\Dockerfile" -Destination .
+        
+        # Keystore 파일 복사 (보안상 GitHub에 올리지 않음)
+        # 대상 폴더가 없으면 생성 후 복사
+        $keystoreDest = "src\main\resources"
+        if (!(Test-Path $keystoreDest)) { New-Item -ItemType Directory -Path $keystoreDest -Force }
+        Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\src\main\resources\keystore.p12" -Destination "$keystoreDest\keystore.p12"
       shell: powershell
 
     - name: Docker Compose Down
