@@ -1,0 +1,28 @@
+name: Deploy Prod
+
+on:
+  push:
+    branches: [ "prod" ]
+
+jobs:
+  deploy:
+    name: Deploy to Local Windows Docker
+    runs-on: self-hosted
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Copy Config Files (Docker)
+      # docker-compose.yml과 Dockerfile은 보안/설정상 로컬에서만 관리하므로, 원본 위치에서 복사해옴
+      run: |
+        Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\docker-compose.yml" -Destination .
+        Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\Dockerfile" -Destination .
+      shell: powershell
+
+    - name: Docker Compose Down
+      run: docker-compose down --remove-orphans
+      continue-on-error: true
+
+    - name: Docker Compose Up
+      run: docker-compose up -d --build

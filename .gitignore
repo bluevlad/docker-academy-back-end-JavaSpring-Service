@@ -1,0 +1,9 @@
+/build/
+/bin/
+.gradle/
+.idea/
+*.iml
+.env
+actions-runner/
+docker-compose.yml
+Dockerfile
