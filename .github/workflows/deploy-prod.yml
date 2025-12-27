@@ -15,15 +15,22 @@ jobs:
 
     - name: Copy Config Files (Docker)
       # docker-compose.yml과 Dockerfile은 보안/설정상 로컬에서만 관리하므로, 원본 위치에서 복사해옴
+      # 경로는 Runner의 .env 파일에 정의된 LOCAL_SOURCE_PATH 환경변수 사용
       run: |
-        Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\docker-compose.yml" -Destination .
-        Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\Dockerfile" -Destination .
+        $sourcePath = $env:LOCAL_SOURCE_PATH
+        if (-not $sourcePath) {
+          Write-Error "LOCAL_SOURCE_PATH environment variable is not set."
+          exit 1
+        }
+        
+        Copy-Item -Path "$sourcePath\docker-compose.yml" -Destination .
+        Copy-Item -Path "$sourcePath\Dockerfile" -Destination .
         
         # Keystore 파일 복사 (보안상 GitHub에 올리지 않음)
         # 대상 폴더가 없으면 생성 후 복사
         $keystoreDest = "src\main\resources"
         if (!(Test-Path $keystoreDest)) { New-Item -ItemType Directory -Path $keystoreDest -Force }
-        Copy-Item -Path "C:\Users\bluev\.gemini\antigravity\scratch\docker-academy-back-end-JavaSpring-Service\src\main\resources\keystore.p12" -Destination "$keystoreDest\keystore.p12"
+        Copy-Item -Path "$sourcePath\src\main\resources\keystore.p12" -Destination "$keystoreDest\keystore.p12"
       shell: powershell
 
     - name: Docker Compose Down
