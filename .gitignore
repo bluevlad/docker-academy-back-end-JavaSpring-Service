@@ -5,6 +5,7 @@
 *.iml
 .env
 actions-runner/
+
 docker-compose.yml
 Dockerfile
 src/main/resources/keystore.p12
