@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unmong Systems - Service Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --action-color: #10b981;
+            --border-color: rgba(148, 163, 184, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 100%, hsla(225, 39%, 30%, 1) 0, transparent 50%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            padding: 3rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, #38bdf8 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.05em;
+            text-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .subtitle {
+            margin-top: 0.75rem;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        .section-group {
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .section-group:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .section-group:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .section-group:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px) scale(1.01);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+            background: rgba(40, 50, 70, 0.8);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card-tag.frontend {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--action-color);
+        }
+
+        .card-title {
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .card-url {
+            margin-top: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: 'Monaco', 'Consolas', monospace;
+            opacity: 0.7;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: color 0.2s;
+        }
+
+        .card:hover .card-url {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .link-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Hello, Unmong Systems!</h1>
+            <p class="subtitle">Centralized Management Gateway</p>
+        </header>
+
+        <div class="section-group">
+            <div class="section-title">User Services</div>
+            <div class="link-grid">
+                <a href="http://study.unmong.com:8080/swagger-ui/index.html" class="card" target="_blank">
+                    <div class="card-header">
+                        <span class="card-tag">Backend API</span>
+                    </div>
+                    <div class="card-title">Online Academy User Service</div>
+                    <div class="card-url">http://study.unmong.com:8080/swagger-ui/index.html</div>
+                </a>
+                <a href="http://study.unmong.com:3000" class="card" target="_blank">
+                    <div class="card-header">
+                        <span class="card-tag frontend">Frontend UI</span>
+                    </div>
+                    <div class="card-title">Online Academy User Portal</div>
+                    <div class="card-url">http://study.unmong.com:3000</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-title">Admin Services</div>
+            <div class="link-grid">
+                <a href="http://admin.unmong.com:8080/swagger-ui/index.html" class="card" target="_blank">
+                    <div class="card-header">
+                        <span class="card-tag">Backend API</span>
+                    </div>
+                    <div class="card-title">Online Academy Admin Service</div>
+                    <div class="card-url">http://admin.unmong.com:8080/swagger-ui/index.html</div>
+                </a>
+                <a href="http://admin.unmong.com:3000" class="card" target="_blank">
+                    <div class="card-header">
+                        <span class="card-tag frontend">Frontend UI</span>
+                    </div>
+                    <div class="card-title">Online Academy Admin Console</div>
+                    <div class="card-url">http://admin.unmong.com:3000</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-title">Analytics & Intelligence</div>
+            <div class="link-grid">
+                <a href="http://teacherhub.unmong.com:3001" class="card" target="_blank">
+                    <div class="card-header">
+                        <span class="card-tag">Data Service</span>
+                    </div>
+                    <div class="card-title">강사 카페 동향 정보 수집 서비스</div>
+                    <div class="card-url">http://teacherhub.unmong.com:3001</div>
+                </a>
+                <a href="http://teacherhub.unmong.com:3002" class="card" target="_blank">
+                    <div class="card-header">
+                        <span class="card-tag">Data Service</span>
+                    </div>
+                    <div class="card-title">학원 카페 동향 정보 수집 서비스</div>
+                    <div class="card-url">http://teacherhub.unmong.com:3002</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
