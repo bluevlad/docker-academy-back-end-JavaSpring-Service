@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docker-academy-back-end-javaspring-service
+    ports:
+      - "0.0.0.0:80:8080"
+      - "0.0.0.0:443:8443"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - SERVER_ADDRESS=0.0.0.0
+    restart: unless-stopped
+    networks:
+      - academy-network
+
+networks:
+  academy-network:
+    driver: bridge

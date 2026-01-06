@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @GetMapping("/")
+    @GetMapping("/old-home")
     public ResponseEntity<String> hello() {
         String html = "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -29,8 +29,10 @@ public class HelloController {
                 "</div>\n" +
                 "<h1>Hello, Unmong Systems!</h1>\n" +
                 "<div class=\"links\">\n" +
-                "<a href=\"http://www.unmong.com:8080/swagger-ui/index.html\">Online Academy Back-end Api Swagger-Ui : http://www.unmong.com:8080/swagger-ui/index.html</a>\n" +
-                "<a href=\"http://www.unmong.com:3000\">Online Academy Frong-end Ui : http://www.unmong.com:3000</a>\n" +
+                "<a href=\"http://www.unmong.com:8080/swagger-ui/index.html\">Online Academy Back-end Api Swagger-Ui : http://www.unmong.com:8080/swagger-ui/index.html</a>\n"
+                +
+                "<a href=\"http://www.unmong.com:3000\">Online Academy Frong-end Ui : http://www.unmong.com:3000</a>\n"
+                +
                 "</div>\n" +
                 "<div class=\"copyright\">\n" +
                 "<p><strong>Copyright</strong><br>UM Systems</p>\n" +
@@ -38,7 +40,8 @@ public class HelloController {
                 "<p>이 소프트웨어는 운몽시스템즈(UM Systems)의 독점 소유이며, 저작권법에 의해 보호됩니다.<br>\n" +
                 "본 소프트웨어의 무단 복제, 배포, 수정, 재배포는 법적으로 금지되어 있습니다.</p>\n" +
                 "<p>This software is the exclusive property of UM Systems and is protected by copyright law.<br>\n" +
-                "Unauthorized copying, distribution, modification, or redistribution of this software is prohibited by law.</p>\n" +
+                "Unauthorized copying, distribution, modification, or redistribution of this software is prohibited by law.</p>\n"
+                +
                 "</div>\n" +
                 "</body>\n" +
                 "</html>";
