@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: docker-academy-back-end-javaspring-service
+    container_name: academy-main-api-prod
     ports:
       - "0.0.0.0:80:8080"
       - "0.0.0.0:443:8443"

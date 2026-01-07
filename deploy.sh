@@ -9,13 +9,13 @@ docker load -i /tmp/deploy/academy-backend.tar
 
 # Stop existing container if running
 echo "Stopping existing container..."
-docker stop academy-backend 2>/dev/null || true
-docker rm academy-backend 2>/dev/null || true
+docker stop academy-main-api-prod 2>/dev/null || true
+docker rm academy-main-api-prod 2>/dev/null || true
 
 # Start new container
 echo "Starting new container..."
 docker run -d \
-  --name academy-backend \
+  --name academy-main-api-prod \
   --restart unless-stopped \
   -p 0.0.0.0:80:80 \
   -e SPRING_PROFILES_ACTIVE=prod \
