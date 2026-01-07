@@ -3,7 +3,7 @@ name: Deploy on Prod Branch
 on:
   push:
     branches:
-      - prod
+      - deploy-backup-disabled
 
 jobs:
   build-and-deploy:
