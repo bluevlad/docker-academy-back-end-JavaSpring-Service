@@ -3,11 +3,10 @@
 /target/
 .gradle/
 .idea/
+actions-runner/
+.vscode/
+.gitignore
 *.iml
 .env
-actions-runner/
-
-
 src/main/resources/keystore.p12
 pom.xml
-.gitignore
